@@ -1,34 +1,108 @@
 {% load static %}
 <html>
 <head>
+	<title>Geodezjapwr</title>
 	 <meta charset="UTF-8"/>
 	 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	 <link rel="stylesheet" href="{% static 'css/style.css' %}">
+	 <link rel="stylesheet" type="text/css" href="{% static 'strona/css/style.css' %}">
+	 <link rel="stylesheet" type="text/css" href="{% static 'strona/css/fontello/css/fontello.css' %}">
+	 <link rel="shortcut icon" href="{% static 'strona/css/images/faviconnn.ico' %}" type="image/x-icon">
+     <link rel="icon" href="{% static 'strona/css/images/faviconnn.ico' %}" type="image/x-icon">
+</head>
 <body>
 	<div id="container">
-		<div id="logo">
-			<img  src="logo.png" alt="Nie można załadować loga strony" />
-		</div>
-		<div id="menu">
-			<h1>| O nas | 1111111 | 22222222 | 333333333 | </h1>
+		<div class="nav">
+			<a href="#">
+				<div id="logo">
+				
+					<img  src="{% static 'strona/css/images/logo.png' %}" alt="Nie można załadować loga strony" />
+				</div>
+			</a>	
+			<a href="#">
+				<div class="menu">
+					<p> Strona główna </p>
+				</div>
+			</a>
+			<a href="#">
+				<div class="menu">
+					<p> Teoria </p>
+				</div>
+			</a>
+			<a href="#">
+				<div class="menu">
+					<p> Obliczenia </p>
+				</div>
+			</a>
+			<a href="#">
+				<div class="menu">
+					<p> O nas </p>
+				</div>
+			</a>
 		</div>
 		<div id="zdjecie">
-			<h1>zdjecie</h1>
+			<div id="tlo">
+				<a href="#"><div class="social" style="background-color: #3b5998; border-top-left-radius: 8px; top: 120px;"><i class="icon-facebook"></i></div></a>
+				<a href="#"><div class="social" style="background-color: #55acee; top: 170px;"><i class="icon-twitter"></i></div></a>
+				<a href="#"><div class="social" style="background-color: #ff0000; top: 220px;"><i class="icon-youtube"></i></div></a>
+				<a href="#"><div class="social" style="background-color: #2F4F4F; border-bottom-left-radius: 8px; top: 270px;"><i class="icon-email"></i></div></a>
+				<a href="#"><div id="napisnazdjeciu">Nasze projekty</div></a>
+			</div>
 		</div>
 		<div id="formularz">
-			<h1>formularz</h1>
+			<h1>Co twoim zdaniem powinno znaleźć się na tej stronie?</h1>
+			<h2>Pomóż nam ją ulepszyć przesyłając nam swoją opinie.</h2>
 		</div>
 		<div id="stopka">
-			<h1>Wykonał </h1>
-			{% for post in posts %}
-				<div>
-					<p>published: {{ post.published_date }}</p>
-					<h1><a href="">{{ post.title }}</a></h1>
-					<p>{{ post.text|linebreaksbr }}</p>
-				</div>
-			{% endfor %}
+			<p>Wszelkie prawa zastrzeżone &copy Wiktor Łesak</p>
 		</div>
 	</div>
+	<script src="{% static 'strona/jquery/jquery-1.11.3.min.js' %}"></script>
+	<script>
+
+		$(document).ready(function() {
+		var NavY = $('.nav').offset().top;
+		 
+		var stickyNav = function(){
+		var ScrollY = $(window).scrollTop();
+			  
+		if (ScrollY > NavY) { 
+			$('.nav').addClass('sticky');
+		} else {
+			$('.nav').removeClass('sticky'); 
+		}
+		};
+		 
+		stickyNav();
+		 
+		$(window).scroll(function() {
+			stickyNav();
+		});
+		});
+	
+    </script>
+	<script>
+
+		$(document).ready(function() {
+		var NavY = $('.social').offset().top;
+		 
+		var stickyNav = function(){
+		var ScrollY = $(window).scrollTop();
+			  
+		if (ScrollY > NavY) { 
+			$('.social').addClass('sticky2');
+		} else {
+			$('.social').removeClass('sticky2'); 
+		}
+		};
+		 
+		stickyNav();
+		 
+		$(window).scroll(function() {
+			stickyNav();
+		});
+		});
+	
+    </script>
 </body>
 </html>
