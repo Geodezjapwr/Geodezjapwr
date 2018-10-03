@@ -1,0 +1,120 @@
+{% load static %}
+<html>
+<head>
+	<title>Geodezjapwr</title>
+	 <meta charset="UTF-8"/>
+	 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	 <link rel="stylesheet" type="text/css" href="{% static 'strona/css/style.css' %}">
+	 <link rel="stylesheet" type="text/css" href="{% static 'strona/css/fontello/css/fontello.css' %}">
+	 <link rel="shortcut icon" href="{% static 'strona/css/images/faviconnn.ico' %}" type="image/x-icon">
+     <link rel="icon" href="{% static 'strona/css/images/faviconnn.ico' %}" type="image/x-icon">
+	 <script type="text/javascript">
+		function przekierowanie()
+		{
+			setTimeout('document.getElementById("opiniawyslana").innerHTML = "Wysłano.";',4000);
+			setTimeout("location.href='';",5800);
+		}
+	</script>
+</head>
+<body onload="przekierowanie()">
+	<script src="{% static 'strona/jquery/jquery-1.11.3.min.js' %}"></script>
+	
+	<div id="container">
+		<div class="nav">
+			<a href="#">
+				<div id="logo">
+				
+					<img  src="{% static 'strona/css/images/logo.png' %}" alt="Nie można załadować loga strony" />
+				</div>
+			</a>	
+			<a href="#">
+				<div class="menu">
+					<p> Strona główna </p>
+				</div>
+			</a>
+			<a href="#">
+				<div class="menu">
+					<p> Teoria </p>
+				</div>
+			</a>
+			<a href="#">
+				<div class="menu">
+					<p> Obliczenia </p>
+				</div>
+			</a>
+			<a href="#">
+				<div class="menu">
+					<p> O nas </p>
+				</div>
+			</a>
+		</div>
+		<div id="zdjecie">
+			<div id="tlo">
+			    <div id="dzieki" style="padding: 20px; color: #00FF00; margin-bottom: auto; margin-top: 7%; font-size: 40px; background-color: #2F4F4F;  width: 70%; margin-left: auto; margin-right: auto; border-radius: 5px;">Dziękujemy !!!
+					<div id="wysylanie"><img  src="{% static 'strona/css/images/wysylanie.gif' %}" style="height: 20%;"  /></div>
+					<p style="margin: 15px;" id="opiniawyslana"><span style="color: #2F4F4F;">.</span></p>
+				</div>
+				<a id="slider" href="#" style="margin: 0; padding= 0;"><!-- <img  src="{% static 'strona/css/images/zdjecie2.jpg' %}" style="width: 100%; height: 100%;"	/> --><a>
+				<a href="#"><div class="social" style="background-color: #3b5998; border-top-left-radius: 8px; top: 120px;"><i class="icon-facebook"></i></div></a>
+				<a href="#"><div class="social" style="background-color: #55acee; top: 170px;"><i class="icon-twitter"></i></div></a>
+				<a href="#"><div class="social" style="background-color: #ff0000; top: 220px;"><i class="icon-youtube"></i></div></a>
+				<a href="#"><div class="social" style="background-color: #2F4F4F; border-bottom-left-radius: 8px; top: 270px;"><i class="icon-email"></i></div></a>
+			
+				
+			</div>
+		</div>	
+				
+		
+		<div id="stopka">
+			<p style="padding: 0; margin: 0;">Wszelkie prawa zastrzeżone &copy 2018 WŁ</p>
+		</div>
+	</div>
+	<script>
+
+		$(document).ready(function() {
+		var NavY = $('.nav').offset().top;
+		 
+		var stickyNav = function(){
+		var ScrollY = $(window).scrollTop();
+			  
+		if (ScrollY > NavY) { 
+			$('.nav').addClass('sticky');
+		} else {
+			$('.nav').removeClass('sticky'); 
+		}
+		};
+		 
+		stickyNav();
+		 
+		$(window).scroll(function() {
+			stickyNav();
+		});
+		});
+	
+    </script>
+	<script>
+
+		$(document).ready(function() {
+		var NavY = $('.social').offset().top;
+		 
+		var stickyNav = function(){
+		var ScrollY = $(window).scrollTop();
+			  
+		if (ScrollY > NavY) { 
+			$('.social').addClass('sticky2');
+		} else {
+			$('.social').removeClass('sticky2'); 
+		}
+		};
+		 
+		stickyNav();
+		 
+		$(window).scroll(function() {
+			stickyNav();
+		});
+		});
+	
+    </script>
+</body>
+</html>

@@ -28,6 +28,7 @@ body
 	height: 60px;
 	margin: 0px;
 	position: fixed;
+	z-index: 100;
 }
 #logo
 {
@@ -58,20 +59,19 @@ body
 
 #zdjecie
 {
-	margin: 0px;
+	margin: 0;
 	clear: both;
-	height: 600px;
+	height: 100%;
 	width: 100%;
 }
 #tlo
 {
-	background: white url("images/zdjecie.jpg") center no-repeat;
 	background-size:cover;
 	width: 100%;
-	height: 600px;
+	height: 100%;
 	font-size: 30px;
-	font-family: arial;
-	padding-top: 5%;
+	font-family: monospace;
+	padding-top: 60px;
 }
 #formularz
 {
@@ -88,6 +88,9 @@ body
 	font-family: arial;
 	font-size: 16px;
 	padding: 10px;
+	top: 0;
+	margin: 0;
+	
 }
 img
 {
@@ -102,10 +105,11 @@ img
 	padding: 2px;
 	width: 250px;
 	text-align: center;
-	margin-left: 5%;
-	margin-bottom: 5%;
 	border-radius: 4px;  
-	margin-top: 420px;
+    bottom: 7%;
+	left: 7%;
+    position: absolute;
+	
 	
 }
 #napisnazdjeciu:hover
@@ -151,3 +155,74 @@ a:hover
 {     
 	text-decoration: none; 
 } 
+.zdj
+{
+	margin-left: auto;
+	margin-right: auto;
+    bottom: 2%;
+    position: absolute;
+	left: 50%;
+	
+}
+.zdj1
+{
+	background: rgba(255, 255, 255, 0.5);
+	width: 30px;
+	height: 30px;
+	border-radius: 80px;  
+	float: left;
+	margin: 5px;
+}
+.zdj1:hover
+{
+	background: #F9E04B;
+	width: 30px;
+	height: 30px;
+	border-radius: 80px;  
+}
+input
+{
+	margin-top: 1%;
+	margin-bottom: 1%;
+	border-radius: 5px;
+	color: #000000;
+	width: 15%;
+	height: 5%;
+}
+#id_Text
+{
+	border-radius: 5px;
+	color: #000000;
+	width: 60%;
+	height: 50%;
+}
+input:hover
+{
+	cursor: pointer;
+	color: #2F4F4F;
+	background-color: #E6E6E6;
+	border: 1px solid #F9E04B;
+	border-radius: 5px;
+}
+#id_Text:hover
+{
+	cursor: pointer;
+	color: #2F4F4F;
+	background-color: #E6E6E6;
+	border: 1px solid #F9E04B;
+}
+input[type=submit]
+{
+	outline: none;
+	border-radius: 5px;
+	margin-top: 5px;
+	width: 80px;
+	height: 7%;
+}
+input[type=submit]:hover
+{
+	cursor: pointer;
+	color: #2F4F4F;
+	background-color: #E6E6E6;;
+	border: 1px solid #F9E04B;
+}

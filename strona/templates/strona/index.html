@@ -10,7 +10,76 @@
 	 <link rel="shortcut icon" href="{% static 'strona/css/images/faviconnn.ico' %}" type="image/x-icon">
      <link rel="icon" href="{% static 'strona/css/images/faviconnn.ico' %}" type="image/x-icon">
 </head>
-<body>
+<body onload="zmienslajd()">
+	<script src="{% static 'strona/jquery/jquery-1.11.3.min.js' %}"></script>
+	<script type="text/javascript">
+		
+			var numer = Math.floor(Math.random()*3)+1;
+			
+			var timer1 = 0;
+			var timer2 = 0;
+			
+			
+			function ustawslajd(nrslajdu)
+			{
+				clearTimeout(timer1);
+				clearTimeout(timer2);
+				numer = nrslajdu - 1;
+				
+				schowaj();
+				setTimeout("zmienslajd()", 300);
+				
+			}
+			
+			function schowaj()
+			{
+				$("#slider").fadeOut(300);
+			}
+		
+			function zmienslajd()
+			{  
+			    var kolko = "<div class=\"zdj1\" style=\"background: #F9E04B;\">"
+				var kolkopuste = "<div class=\"zdj1\" style=\"background: rgba(255, 255, 255, 0.5);;\">"
+				numer++; if (numer>3) numer=1;
+				if (numer ==1)
+				{
+					var plik = "<img  src=\"{% static 'strona/css/images/zdjecie1.jpg' %}\" style=\"width: 100%; height: 100%;\"	/>";
+					document.getElementById("slider").innerHTML = plik;
+					document.getElementById("kolko1").innerHTML = kolko;
+					document.getElementById("kolko2").innerHTML = kolkopuste;
+					document.getElementById("kolko3").innerHTML = kolkopuste;
+					$("#slider").fadeIn(300);
+					$("#kolko1").fadeIn(300);
+					timer1 = setTimeout("zmienslajd()", 5000);
+				    timer2 = setTimeout("schowaj()", 4700);
+				}
+				else if (numer ==2)
+				{
+					var plik = "<img  src=\"{% static 'strona/css/images/zdjecie2.jpg' %}\" style=\"width: 100%; height: 100%;\"	/>";
+					document.getElementById("slider").innerHTML = plik;
+					document.getElementById("kolko2").innerHTML = kolko;
+					document.getElementById("kolko1").innerHTML = kolkopuste;
+					document.getElementById("kolko3").innerHTML = kolkopuste;
+					$("#slider").fadeIn(300);
+					$("#kolko2").fadeIn(300);
+					timer1 = setTimeout("zmienslajd()", 5000);
+				    timer2 = setTimeout("schowaj()", 4700);
+				}
+				else if(numer ==3)
+				{
+					var plik = "<img  src=\"{% static 'strona/css/images/zdjecie3.jpg' %}\" style=\"width: 100%; height: 100%;\"	/>";
+					document.getElementById("slider").innerHTML = plik;
+					document.getElementById("kolko3").innerHTML = kolko;
+					document.getElementById("kolko2").innerHTML = kolkopuste;
+					document.getElementById("kolko1").innerHTML = kolkopuste;
+					$("#slider").fadeIn(300);
+					$("#kolko3").fadeIn(300);
+					timer1 = setTimeout("zmienslajd()", 5000);
+				    timer2 = setTimeout("schowaj()", 4700);
+				}
+			}
+			
+		</script>
 	<div id="container">
 		<div class="nav">
 			<a href="#">
@@ -42,22 +111,37 @@
 		</div>
 		<div id="zdjecie">
 			<div id="tlo">
+			    
+				<a id="slider" href="#" style="margin: 0; padding= 0;"><!-- <img  src="{% static 'strona/css/images/zdjecie2.jpg' %}" style="width: 100%; height: 100%;"	/> --><a>
 				<a href="#"><div class="social" style="background-color: #3b5998; border-top-left-radius: 8px; top: 120px;"><i class="icon-facebook"></i></div></a>
 				<a href="#"><div class="social" style="background-color: #55acee; top: 170px;"><i class="icon-twitter"></i></div></a>
 				<a href="#"><div class="social" style="background-color: #ff0000; top: 220px;"><i class="icon-youtube"></i></div></a>
 				<a href="#"><div class="social" style="background-color: #2F4F4F; border-bottom-left-radius: 8px; top: 270px;"><i class="icon-email"></i></div></a>
 				<a href="#"><div id="napisnazdjeciu">Nasze projekty</div></a>
+				<div class="zdj">
+					<a href="#" onclick="ustawslajd(1)" id="kolko1" ><div class="zdj1"></div></a>
+					<a href="#" onclick="ustawslajd(2)" id="kolko2"><div class="zdj1"></div></a>
+					<a href="#" onclick="ustawslajd(3)" id="kolko3"><div class="zdj1"></div></a>
+					<a href="#"><div style="clear: both;"></div></a>
+				</div>
 			</div>
 		</div>
 		<div id="formularz">
 			<h1>Co twoim zdaniem powinno znaleźć się na tej stronie?</h1>
 			<h2>Pomóż nam ją ulepszyć przesyłając nam swoją opinie.</h2>
+				
+				<form method="POST" class="post-form" >
+				    {% csrf_token %}
+					{{ form.as_p }}
+					<input type="submit" class="save btn btn-default" value="Wyślij" onclick="kliknij()" id="przycisk"></input>
+					
+				</form>
+			
 		</div>
 		<div id="stopka">
-			<p>Wszelkie prawa zastrzeżone &copy Wiktor Łesak</p>
+			<p style="padding: 0; margin: 0;">Wszelkie prawa zastrzeżone &copy 2018 WŁ</p>
 		</div>
 	</div>
-	<script src="{% static 'strona/jquery/jquery-1.11.3.min.js' %}"></script>
 	<script>
 
 		$(document).ready(function() {
